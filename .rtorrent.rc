@@ -1,0 +1,12 @@
+directory = /home/plant/torrents/\!limbo/
+session = /home/plant/torrents/.session
+
+schedule = watch_directory_1,10,10,"load_start=/home/plant/torrents/what.cd/\!t/*.torrent,d.set_custom1=/home/plant/torrents/what.cd/"
+schedule = watch_directory_2,10,10,"load_start=/home/plant/torrents/other/\!t/*.torrent,d.set_custom1=/home/plant/torrents/other/"
+schedule = untied_directory,10,10,remove_untied=
+
+system.method.insert=checkdirs,simple,"not=\"$equal={d.get_custom1=,d.get_base_path=}\""
+system.method.insert=movecheck,simple,"and={checkdirs=,d.get_complete=,d.get_custom1=}"
+system.method.insert=movedir,simple,"d.set_directory=$d.get_custom1=;execute=mv,-u,$d.get_base_path=,$d.get_custom1=;d.set_custom1=;d.stop=;d.start="
+system.method.set_key=event.download.hash_done,move_hashed,"branch={$movecheck=,movedir=}"
+system.method.set_key=event.download.finished,move_complete,"branch={$movecheck=,movedir=}"
