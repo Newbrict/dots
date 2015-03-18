@@ -3,6 +3,7 @@ Config {
 	, bgColor = "#000000"
 	, fgColor = "grey"
 	, position = Top { height = 14 }
+	, iconOffset = 8
 	, commands = [
 		  Run Date "%H:%M:%S | %Y-%m-%d" "date" 10
 		, Run BatteryP ["BAT0"] [

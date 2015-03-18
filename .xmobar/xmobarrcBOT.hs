@@ -2,6 +2,7 @@ Config {
 	  font = "xft:Ubuntu Mono:pixelsize=14:antialias=true"
 	, bgColor = "#000000"
 	, fgColor = "grey"
+	, iconOffset = 8
 	, position = Bottom { height = 16 }
 	, commands = [
 		  Run MultiCpu [
