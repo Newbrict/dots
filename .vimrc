@@ -1,5 +1,8 @@
 set nocompatible
 set t_Co=16
+set nu
+set relativenumber
+syntax on
 call pathogen#infect()
 set background=dark " dark | light "
 colorscheme solarized

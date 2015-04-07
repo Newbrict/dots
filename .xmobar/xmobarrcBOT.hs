@@ -19,13 +19,14 @@ Config {
 			, "-w", "3"
 		] 10
 		, Run Network "wlp3s0" [
-			  "-t", "[<dev> <rx> / <tx>]"
-			, "-L", "512"
-			, "-H", "2048"
+			  "-t", "[<icon=/home/plant/.xmobar/stlarch_icons/downarrow1.xbm/><rx> | <icon=/home/plant/.xmobar/stlarch_icons/uparrow1.xbm/><tx>]"
+			, "-L", "500000"
+			, "-S", "True"
+			, "-H", "5000000"
 			, "-l", "white"
 			, "-w", "3"
 			, "-n", "cyan"
-			, "-h", "green"
+			, "-h", "red"
 		] 10
 		--, Run Com "/home/plant/Documents/git/bitcoin-prices/btcp_xmobar.sh" [""] "btc" 10
 		--, Run Com "/home/plant/Documents/random/rpiclassgrab/xmobar.sh" [""] "seats" 10
