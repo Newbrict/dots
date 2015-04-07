@@ -28,6 +28,7 @@ alias btc='/home/plant/code/git/bitcoin-prices/btcp_disp.sh'
 alias caps="xmodmap ~/.Xmodmap"
 alias booty="systemd-analyze"
 alias rekt="/home/plant/code/git/Security-Toolkit/rekt.sh"
+alias view_xbm="python /home/plant/code/git/xbm-view/view_xbm.py"
 
 class() {
   if [[ "$1" == "cfin" ]]; then
