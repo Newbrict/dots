@@ -1,9 +1,9 @@
 Config {
-	  font = "xft:Ubuntu Mono:pixelsize=14:antialias=true"
+	  font = "xft:Ubuntu Mono:pixelsize=11:antialias=true"
 	, bgColor = "#000000"
 	, fgColor = "grey"
-	, iconOffset = 8
-	, position = Bottom { height = 16 }
+	, iconOffset = 6
+	, position = Bottom { height = 11 }
 	, commands = [
 		  Run MultiCpu [
 			  "-t", "[<icon=/home/plant/.xmobar/stlarch_icons/cpu13.xbm/><total0>] [<icon=/home/plant/.xmobar/stlarch_icons/cpu13.xbm/><total1>] [<icon=/home/plant/.xmobar/stlarch_icons/cpu13.xbm/><total2>] [<icon=/home/plant/.xmobar/stlarch_icons/cpu13.xbm/><total3>]"
@@ -17,6 +17,9 @@ Config {
 		, Run Memory [
 			  "-t", "[<icon=/home/plant/.xmobar/stlarch_icons/mem1.xbm/><usedratio>]"
 			, "-w", "3"
+		] 10
+		, Run Uptime [
+			"-t", "[<days>d <hours>h <minutes>m]"
 		] 10
 		, Run Network "wlp3s0" [
 			  "-t", "[<icon=/home/plant/.xmobar/stlarch_icons/downarrow1.xbm/><rx> | <icon=/home/plant/.xmobar/stlarch_icons/uparrow1.xbm/><tx>]"
@@ -33,5 +36,5 @@ Config {
 	]
 	, sepChar = "%"
 	, alignSep = "}{"
-	, template = "<fc=grey> %multicpu% | %memory% | %wlp3s0%</fc>}{"
+	, template = "<fc=grey> %multicpu% - %memory% - %wlp3s0% - %uptime% </fc>}{"
 }

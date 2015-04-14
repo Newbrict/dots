@@ -1,11 +1,19 @@
 Config {
-	  font = "xft:Ubuntu Mono:pixelsize=14:antialias=true"
+	  font = "xft:Ubuntu Mono:pixelsize=11:antialias=true"
 	, bgColor = "#000000"
 	, fgColor = "grey"
-	, position = Top { height = 14 }
-	, iconOffset = 8
+	, position = Top { height = 11 }
+	, iconOffset = 6
 	, commands = [
-		  Run Date "%H:%M:%S | %Y-%m-%d" "date" 10
+		  Run Date "[%H:%M:%S] - [%Y-%m-%d]" "date" 10
+		, Run Weather "KALB" [
+			"-t", "[<tempF>F]"
+			, "-L", "32"
+			, "-H", "75"
+			, "-l", "cyan"
+			, "-n", "yellow"
+			, "-h", "red"
+		] 10
 		, Run BatteryP ["BAT0"] [
 	 		  "-t", "<acstatus><left>%"
 			, "-L", "15"
@@ -23,5 +31,5 @@ Config {
 	]
 	, sepChar = "%"
 	, alignSep = "}{"
-	, template = " %StdinReader%}%battery%{<fc=#FFFFFF>%date%</fc>"
+	, template = " %StdinReader%}%battery%{<fc=#FFFFFF>%date% - %KALB%</fc>"
 }
