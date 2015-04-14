@@ -28,7 +28,7 @@ myLayout = tiled ||| Mirror tiled ||| Full where
 ------------------------------------------------------------------------
 main = do
 -- for relaunching, reload trayer
-trayer <- spawn "killall trayer; sleep 0.1;trayer --edge bottom --align right --SetDockType true --SetPartialStrut true --expand true --transparent true --alpha 0 --tint 0x000000 --widthtype request --heighttype pixel --height 16 --distance -1 &"
+trayer <- spawn "killall trayer; sleep 0.1;trayer --edge bottom --align right --SetDockType true --expand true --transparent true --alpha 0 --tint 0x000000 --widthtype request --heighttype pixel --height 16 --distance -1 &"
 xmprocT <- spawnPipe "/usr/bin/xmobar ~/.xmobar/xmobarrcTOP.hs"
 xmprocB <- spawnPipe "/usr/bin/xmobar ~/.xmobar/xmobarrcBOT.hs"
 
