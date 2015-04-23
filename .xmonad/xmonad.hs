@@ -26,6 +26,11 @@ myLayout = tiled ||| Mirror tiled ||| Full where
   -- Percent of screen to increment by when resizing panes
   delta   = 5/100
 ------------------------------------------------------------------------
+myManageHook = composeAll
+   [ className =? "OakTale"  --> doFloat
+   , manageDocks
+   ]
+
 main = do
 -- for relaunching, reload trayer
 trayer <- spawn "killall trayer; sleep 0.1;trayer --edge bottom --align right --SetDockType true --expand true --transparent true --alpha 0 --tint 0x000000 --widthtype request --heighttype pixel --height 16 --distance -1 &"
@@ -33,7 +38,7 @@ xmprocT <- spawnPipe "/usr/bin/xmobar ~/.xmobar/xmobarrcTOP.hs"
 xmprocB <- spawnPipe "/usr/bin/xmobar ~/.xmobar/xmobarrcBOT.hs"
 
 xmonad $ defaultConfig {
-    manageHook = manageDocks <+> manageHook defaultConfig
+    manageHook = myManageHook <+> manageHook defaultConfig
   , layoutHook = avoidStruts myLayout
   , logHook    = dynamicLogWithPP xmobarPP {
       ppOutput  = \s -> hPutStrLn xmprocT s -- >> hPutStrLn xmprocB s
@@ -54,4 +59,3 @@ xmonad $ defaultConfig {
   [ ("M-b", sendMessage ToggleStruts)
   , ("<Print>", spawn "sleep 0.2; scrot -s")
   ]
-
