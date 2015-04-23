@@ -1,6 +1,7 @@
 import XMonad
 import XMonad.Actions.UpdatePointer
 import XMonad.Layout.Spacing
+import XMonad.Layout.NoBorders
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run
@@ -16,7 +17,7 @@ myWorkspaces         = ["α","β","γ","δ","ε","ζ","μ","θ","λ"]
 myNormalBorderColor  = "#aaaaaa"
 myFocusedBorderColor = "#0000aa"
 ------------------------------------------------------------------------
-myLayout = tiled ||| Mirror tiled ||| Full where
+myLayout = smartBorders tiled ||| Mirror tiled ||| Full where
   -- default tiling algorithm partitions the screen into two panes
   tiled   = spacing 2 $ Tall nmaster delta ratio
   -- The default number of windows in the master pane
@@ -41,7 +42,7 @@ xmonad $ defaultConfig {
     manageHook = myManageHook <+> manageHook defaultConfig
   , layoutHook = avoidStruts myLayout
   , logHook    = dynamicLogWithPP xmobarPP {
-      ppOutput  = \s -> hPutStrLn xmprocT s -- >> hPutStrLn xmprocB s
+      ppOutput  = \s -> hPutStrLn xmprocT s
     , ppTitle   = xmobarColor "#00ff00" "" . shorten 50
     , ppCurrent = xmobarColor "#ffffff" "#0000aa" .wrap " " " "
     , ppUrgent  = xmobarColor "#ffffff" "#ff0000" .wrap " " " "
