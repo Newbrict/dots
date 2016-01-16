@@ -17,7 +17,7 @@ RPROMPT='%(?,%F{blue}:%),%F{yellow}%? %F{red}:()%f'
 PATH="$PATH:/home/plant/.gem/ruby/2.1.0/bin:/home/plant/.npm"
 export CHROME_BIN="/usr/bin/chromium"
 
-source .privaterc
+source ~/.privaterc
 alias notes='vim $(date -I).txt'
 alias todo='vim ~/.todo.txt'
 alias defrag='/home/plant/ioquake3/iodfengine.x86_64'
@@ -68,12 +68,6 @@ PRINT() {
 export GOPATH=~/code/go
 PATH=$PATH:$GOPATH/bin
 
-# NodeJS Code
-export NODE_PATH="'$(npm root)'"
-
 # ENV
 export BROWSER="chromium"
 export EDITOR="vim"
-
-# Ruby
-PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"

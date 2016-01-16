@@ -1,0 +1,40 @@
+Config
+     { font = "xft:Ubuntu Mono:pixelsize=16:antialias=true"
+     , bgColor = "#000000"
+     , fgColor = "grey"
+     , position = Static { xpos = 0 , ypos = 0, width = 1600, height = 16 }
+     , commands = [
+     -- Run Com "/home/plant/Documents/random/scripts/get_btc_coinbase.sh" [""] "btc" 10 
+    Run MultiCpu
+         ["-L","15"
+         ,"-H","45"
+         ,"-w","2"
+         ,"-t","<icon=/home/plant/.xmobar/stlarch_icons/cpu13.xbm/><total0>% <icon=/home/plant/.xmobar/stlarch_icons/cpu13.xbm/><total1>% <icon=/home/plant/.xmobar/stlarch_icons/cpu13.xbm/><total2>% <icon=/home/plant/.xmobar/stlarch_icons/cpu13.xbm/><total3>%"
+         ,"--low","lightblue"
+         ,"--normal","green"
+         ,"--high","red"]
+         20
+     , Run BatteryP ["BAT0"]
+         ["-t","<acstatus><left>%"
+         ,"-L","10"
+         ,"-H","80"
+         ,"-p","3"
+         ,"--"
+         ,"-i","<fc=yellow><icon=/home/plant/.xmobar/stlarch_icons/ac15.xbm/></fc>"
+         ,"-O","<fc=yellow><icon=/home/plant/.xmobar/stlarch_icons/ac15.xbm/></fc>"
+         ,"-o","<fc=#EEEEEE><icon=/home/plant/.xmobar/stlarch_icons/batt5full.xbm/></fc>"
+         ,"-L","-15"
+         ,"-H","-5"
+         ,"-l","lightblue"
+         ,"-m","green"
+         ,"-h","red"]
+         50
+     , Run Network "wlp3s0" ["-L","0","-H","70","--normal","green","--high","red"] 10   
+     , Run Memory ["-t","<icon=/home/plant/.xmobar/stlarch_icons/mem1.xbm/> <usedratio>%"] 10  
+     , Run Date "%Y-%m-%_d %l:%M:%S" "date" 10  
+     , Run StdinReader  
+           ]  
+     , sepChar = "%"  
+     , alignSep = "}{"  
+     , template = " %StdinReader%}<fc=#FFFFFF>%date%</fc>{%battery% <fc=grey> %multicpu% %memory% TRAYER_TRAYE</fc>"
+     }  
