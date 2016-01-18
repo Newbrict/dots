@@ -4,7 +4,7 @@ set nu
 set relativenumber
 syntax on
 call pathogen#infect()
-set background=dark " dark | light "
+set background=dark
 colorscheme solarized
 filetype plugin on
 set cursorline

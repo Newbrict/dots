@@ -3,7 +3,7 @@
 # xset fp rehash
 
 # merge in my Xresources
-#[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
 # make sure my keymap carries over
 xmodmap .Xmodmap

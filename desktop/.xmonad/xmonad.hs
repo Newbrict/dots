@@ -1,14 +1,17 @@
 import XMonad
+import XMonad
 import XMonad.Actions.UpdatePointer
 import XMonad.Layout.Spacing
 import XMonad.Layout.NoBorders
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.EwmhDesktops (ewmh)
 import XMonad.Util.Run
 import XMonad.Util.EZConfig
 import System.IO
+import System.Taffybar.Hooks.PagerHints (pagerHints)
 ------------------------------------------------------------------------
-myTerminal           = "urxvt"
+myTerminal           = "st"
 myFocusFollowsMouse  = False
 myClickJustFocuses   = False
 myBorderWidth        = 1
@@ -33,21 +36,11 @@ myManageHook = composeAll
    ]
 
 main = do
--- for relaunching, reload trayer
-trayer <- spawn "killall trayer; sleep 0.1;trayer --edge bottom --align right --SetDockType true --expand true --transparent true --alpha 0 --tint 0x000000 --widthtype request --heighttype pixel --height 16 --distance -1 &"
-xmprocT <- spawnPipe "/usr/bin/xmobar ~/.xmobar/xmobarrcTOP.hs"
-xmprocB <- spawnPipe "/usr/bin/xmobar ~/.xmobar/xmobarrcBOT.hs"
+taffy <- spawnPipe "/usr/bin/taffybar"
 
-xmonad $ defaultConfig {
+xmonad $ ewmh $ pagerHints $ defaultConfig {
     manageHook = myManageHook <+> manageHook defaultConfig
   , layoutHook = avoidStruts myLayout
-  , logHook    = dynamicLogWithPP xmobarPP {
-      ppOutput  = \s -> hPutStrLn xmprocT s
-    , ppTitle   = xmobarColor "#00ff00" "" . shorten 50
-    , ppCurrent = xmobarColor "#ffffff" "#0000aa" .wrap " " " "
-    , ppUrgent  = xmobarColor "#ffffff" "#ff0000" .wrap " " " "
-    , ppLayout  = const ""
-  } >> updatePointer (0.5, 0.5) (1, 1)
   , terminal           = myTerminal
   , focusFollowsMouse  = myFocusFollowsMouse
   , clickJustFocuses   = myClickJustFocuses
